@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="20" role="img" aria-label="dependencies: none">
+  <title>dependencies: none</title>
+  <rect width="93" height="20" fill="#0d1222"/>
+  <rect x="93" width="47" height="20" fill="#34d399"/>
+  <g font-family="Verdana,'DejaVu Sans',Geneva,sans-serif" font-size="11" text-anchor="middle">
+    <text x="46.5" y="14" fill="#e8ecf7" textLength="77" lengthAdjust="spacingAndGlyphs">dependencies</text>
+    <text x="116.5" y="14" fill="#05070f" font-weight="bold" textLength="31" lengthAdjust="spacingAndGlyphs">none</text>
+  </g>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="159" height="20" role="img" aria-label="runtime: Python 3.10+">
+  <title>runtime: Python 3.10+</title>
+  <rect width="59" height="20" fill="#0d1222"/>
+  <rect x="59" width="100" height="20" fill="#6c8cff"/>
+  <g font-family="Verdana,'DejaVu Sans',Geneva,sans-serif" font-size="11" text-anchor="middle">
+    <text x="29.5" y="14" fill="#e8ecf7" textLength="43" lengthAdjust="spacingAndGlyphs">runtime</text>
+    <text x="109.0" y="14" fill="#ffffff" font-weight="bold" textLength="84" lengthAdjust="spacingAndGlyphs">Python 3.10+</text>
+  </g>
+</svg>

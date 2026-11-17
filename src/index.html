@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Nova — Local Chat</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+
+  :root {
+    --bg: #05070f;
+    --panel: rgba(13, 18, 34, 0.72);
+    --accent: #6c8cff;
+    --accent-2: #a855f7;
+    --cyan: #22d3ee;
+    --text: #e8ecf7;
+    --muted: #8b95b2;
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+
+  html, body { height: 100%; }
+
+  body {
+    margin: 0;
+    font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100dvh;
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Animated backdrop */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: -25%;
+    background:
+      radial-gradient(circle at 22% 22%, rgba(108, 140, 255, 0.30), transparent 42%),
+      radial-gradient(circle at 78% 26%, rgba(168, 85, 247, 0.26), transparent 44%),
+      radial-gradient(circle at 52% 88%, rgba(34, 211, 238, 0.20), transparent 48%);
+    filter: blur(60px);
+    animation: drift 22s ease-in-out infinite alternate;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  @keyframes drift {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    50%  { transform: translate3d(-3%, 3%, 0) scale(1.08); }
+    100% { transform: translate3d(3%, -2%, 0) scale(1.03); }
+  }
+
+  /* App shell */
+  .app {
+    position: relative;
+    z-index: 1;
+    width: min(940px, 100%);
+    height: min(880px, 100dvh);
+    display: flex;
+    flex-direction: column;
+    background: var(--panel);
+    backdrop-filter: blur(26px) saturate(140%);
+    -webkit-backdrop-filter: blur(26px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 26px;
+    overflow: hidden;
+    box-shadow:
+      0 40px 90px rgba(0, 0, 0, 0.65),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+    animation: appIn 0.7s cubic-bezier(0.2, 0.9, 0.3, 1.05) both;
+  }
+
+  @keyframes appIn {
+    from { opacity: 0; transform: translateY(24px) scale(0.97); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 720px) {
+    .app { width: 100%; height: 100dvh; border-radius: 0; border: none; }
+  }
+
+  /* Header */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent);
+    flex-shrink: 0;
+  }
+
+  .brand-avatar {
+    position: relative;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    box-shadow: 0 8px 24px rgba(108, 140, 255, 0.45);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  /* White-tinted logo */
+  .brand-avatar img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+  }
+
+  .brand-avatar::after {
+    content: "";
+    position: absolute;
+    right: -2px;
+    bottom: -2px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #34d399;
+    border: 2.5px solid #0d1222;
+    box-shadow: 0 0 10px #34d399;
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.45; }
+  }
+
+  .brand-text { flex: 1; min-width: 0; }
+
+  .brand-text h1 {
+    margin: 0;
+    font-size: 16.5px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .badge {
+    font-size: 9.5px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    padding: 3px 7px;
+    border-radius: 6px;
+    background: rgba(108, 140, 255, 0.18);
+    color: #a8bcff;
+    border: 1px solid rgba(108, 140, 255, 0.3);
+    text-transform: uppercase;
+  }
+
+  .brand-text p {
+    margin: 2px 0 0;
+    font-size: 12px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.22s ease;
+    flex-shrink: 0;
+  }
+
+  .icon-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+    transform: translateY(-1px);
+  }
+
+  .icon-btn:active { transform: scale(0.93); }
+
+  /* Chat area */
+  .chat {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 22px 20px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+  }
+
+  .chat::-webkit-scrollbar { width: 7px; }
+  .chat::-webkit-scrollbar-track { background: transparent; }
+  .chat::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+  }
+  .chat::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.22); }
+
+  /* Messages */
+  .msg {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    max-width: 100%;
+    animation: pop 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+  }
+
+  @keyframes pop {
+    from { opacity: 0; transform: translateY(14px) scale(0.96); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .msg.user { flex-direction: row-reverse; }
+
+  .avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 11px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    user-select: none;
+    overflow: hidden;
+  }
+
+  .avatar img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+  }
+
+  .msg.bot .avatar img { filter: brightness(0) invert(1); }
+
+  .msg.bot .avatar {
+    background: linear-gradient(135deg, rgba(108, 140, 255, 0.9), rgba(168, 85, 247, 0.9));
+    box-shadow: 0 6px 16px rgba(108, 140, 255, 0.28);
+  }
+
+  .msg.user .avatar {
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .content { display: flex; flex-direction: column; max-width: 76%; }
+  .msg.user .content { align-items: flex-end; }
+
+  .bubble {
+    padding: 12px 16px;
+    border-radius: 18px;
+    font-size: 14.8px;
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+  }
+
+  .msg.bot .bubble {
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.075);
+    border-bottom-left-radius: 6px;
+    color: #dfe5f5;
+  }
+
+  .msg.user .bubble {
+    background: linear-gradient(135deg, #5b7cfa, #8b5cf6);
+    border-bottom-right-radius: 6px;
+    color: #fff;
+    box-shadow: 0 10px 26px rgba(91, 124, 250, 0.32);
+  }
+
+  .bubble strong { color: #fff; font-weight: 700; }
+  .msg.bot .bubble strong { color: #b9c8ff; }
+  .bubble code {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1.5px 6px;
+    border-radius: 6px;
+    font-family: "SF Mono", Menlo, Consolas, monospace;
+    font-size: 13px;
+    color: #7ee7ff;
+  }
+
+  .stamp {
+    font-size: 10.5px;
+    color: rgba(255, 255, 255, 0.28);
+    margin-top: 5px;
+    padding: 0 6px;
+    letter-spacing: 0.3px;
+  }
+
+  /* Typing indicator */
+  .typing .bubble {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    padding: 15px 18px;
+  }
+
+  .dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #7d8cb8;
+    animation: bounce 1.35s infinite ease-in-out;
+  }
+
+  .dot:nth-child(2) { animation-delay: 0.18s; }
+  .dot:nth-child(3) { animation-delay: 0.36s; }
+
+  @keyframes bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.45; }
+    30%           { transform: translateY(-7px); opacity: 1; }
+  }
+
+  /* Quick replies */
+  .quick-wrap {
+    padding: 4px 20px 10px;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scrollbar-width: none;
+    flex-shrink: 0;
+    min-height: 0;
+  }
+
+  .quick-wrap::-webkit-scrollbar { display: none; }
+  .quick-wrap:empty { display: none; }
+
+  .chip {
+    flex-shrink: 0;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12.8px;
+    font-weight: 500;
+    color: #b6c2e2;
+    background: rgba(255, 255, 255, 0.045);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    animation: pop 0.35s ease both;
+  }
+
+  .chip:hover {
+    background: rgba(108, 140, 255, 0.18);
+    border-color: rgba(108, 140, 255, 0.45);
+    color: #dbe4ff;
+    transform: translateY(-2px);
+  }
+
+  .chip:active { transform: scale(0.95); }
+
+  /* Composer */
+  .composer {
+    padding: 10px 20px 18px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+    flex-shrink: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.035), transparent);
+  }
+
+  .input-shell {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 18px;
+    padding: 4px 6px 4px 16px;
+    transition: all 0.25s ease;
+  }
+
+  .input-shell:focus-within {
+    border-color: rgba(108, 140, 255, 0.6);
+    background: rgba(108, 140, 255, 0.07);
+    box-shadow: 0 0 0 4px rgba(108, 140, 255, 0.1);
+  }
+
+  #userInput {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+    font-size: 15px;
+    font-family: inherit;
+    padding: 11px 0;
+    min-width: 0;
+  }
+
+  #userInput::placeholder { color: rgba(139, 149, 178, 0.75); }
+
+  .send-btn {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    border: none;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.4);
+    box-shadow: 0 8px 22px rgba(108, 140, 255, 0.4);
+    flex-shrink: 0;
+  }
+
+  .send-btn:hover:not(:disabled) { transform: scale(1.08) rotate(6deg); }
+  .send-btn:active:not(:disabled) { transform: scale(0.92); }
+
+  .send-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
+
+  .send-btn svg { width: 19px; height: 19px; }
+
+  @media (max-width: 720px) {
+    header { padding: 13px 15px; }
+    .chat { padding: 16px 14px 6px; }
+    .quick-wrap { padding: 4px 14px 8px; }
+    .composer { padding: 8px 14px 14px; }
+    .content { max-width: 82%; }
+    .bubble { font-size: 14.2px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header>
+    <div class="brand-avatar"><img src="../docs/img/icon.png" alt="Nova"></div>
+    <div class="brand-text">
+      <h1>Nova <span class="badge">Local Engine</span></h1>
+      <p id="statusLine">Online • Python skills + JSON brain</p>
+    </div>
+    <button class="icon-btn" id="clearBtn" title="Clear conversation" aria-label="Clear conversation">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 6h18M8 6V4a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v2m3 0v14a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V6"/>
+        <path d="M10 11v6M14 11v6"/>
+      </svg>
+    </button>
+  </header>
+
+  <main class="chat" id="chat" aria-live="polite"></main>
+
+  <div class="quick-wrap" id="quickReplies"></div>
+
+  <form class="composer" id="composer" autocomplete="off">
+    <div class="input-shell">
+      <input
+        id="userInput"
+        type="text"
+        placeholder="Ask Nova..."
+        aria-label="Message"
+        maxlength="500"
+      />
+    </div>
+    <button class="send-btn" type="submit" id="sendBtn" aria-label="Send message">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 2 11 13"/>
+        <path d="M22 2 15 22l-4-9-9-4 20-7z"/>
+      </svg>
+    </button>
+  </form>
+</div>
+
+<script>
+(() => {
+  "use strict";
+
+  // Config
+  const API = location.protocol === "file:" ? "http://localhost:8000/chat" : "/chat";
+  const BOT_AVATAR = "../docs/img/icon.png";
+  const STATUS_IDLE = "Online • Python skills + JSON brain";
+
+  // Inline user glyph, no extra image file
+  const USER_AVATAR = "data:image/svg+xml," + encodeURIComponent(
+    '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#cfd6ea">' +
+    '<circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7z"/></svg>'
+  );
+
+  const GREETING = [
+    "Hey! 👋 I'm **Nova** — running entirely on your machine.",
+    "",
+    "Math, time and date are handled by **local Python code**. Everything else comes from `brain.json`.",
+    "",
+    "Try:",
+    "• `whats 5 plus 3 times 2`",
+    "• `what day is it`",
+    "• `date next month`",
+    "• `tell me a joke`",
+  ].join("\n");
+
+  const GREETING_CHIPS = [
+    "whats 5 plus 3 times 2",
+    "what day is it today",
+    "what is the date next month",
+    "tell me a joke",
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  const chatEl = $("chat");
+  const quickEl = $("quickReplies");
+  const formEl = $("composer");
+  const inputEl = $("userInput");
+  const sendBtn = $("sendBtn");
+  const clearBtn = $("clearBtn");
+  const statusLine = $("statusLine");
+
+  let busy = false;
+  let typingRow = null;
+
+  // Helpers
+  const HTML_ESCAPES = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" };
+  const escapeHTML = (s) => s.replace(/[&<>"]/g, (ch) => HTML_ESCAPES[ch]);
+
+  // Italics need hugging asterisks, so "2 * 3 * 4" survives
+  const formatText = (s) => escapeHTML(s)
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*(?=\S)([^*\n]*?\S)\*/g, "<em>$1</em>")
+    .replace(/`(.+?)`/g, "<code>$1</code>")
+    .replace(/\n/g, "<br>");
+
+  const timeString = () =>
+    new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+
+  const scrollToBottom = () =>
+    requestAnimationFrame(() => { chatEl.scrollTop = chatEl.scrollHeight; });
+
+  const el = (tag, className, props) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    return Object.assign(node, props);
+  };
+
+  // Messages
+  const addMessage = (who, text) => {
+    const isBot = who === "bot";
+    const avatar = el("div", "avatar");
+    avatar.append(el("img", "", {
+      src: isBot ? BOT_AVATAR : USER_AVATAR,
+      alt: isBot ? "Nova" : "You",
+    }));
+
+    const bubble = el("div", "bubble");
+    bubble.innerHTML = formatText(text);
+
+    const content = el("div", "content");
+    content.append(bubble, el("div", "stamp", { textContent: timeString() }));
+
+    const row = el("div", `msg ${who}`);
+    row.append(avatar, content);
+    chatEl.append(row);
+    scrollToBottom();
+  };
+
+  const showTyping = () => {
+    if (typingRow) return;
+    typingRow = el("div", "msg bot typing");
+    typingRow.innerHTML =
+      `<div class="avatar"><img src="${BOT_AVATAR}" alt="Nova"></div>` +
+      '<div class="content"><div class="bubble">' +
+      '<span class="dot"></span><span class="dot"></span><span class="dot"></span>' +
+      "</div></div>";
+    chatEl.append(typingRow);
+    scrollToBottom();
+  };
+
+  const hideTyping = () => {
+    typingRow?.remove();
+    typingRow = null;
+  };
+
+  const renderQuickReplies = (labels) => {
+    const chips = (labels ?? []).map((label, i) => {
+      const chip = el("button", "chip", { type: "button", textContent: label });
+      chip.style.animationDelay = `${i * 0.05}s`;
+      chip.addEventListener("click", () => {
+        if (!busy) send(label);
+      });
+      return chip;
+    });
+    quickEl.replaceChildren(...chips);
+  };
+
+  const setBusy = (state) => {
+    busy = state;
+    sendBtn.disabled = state;
+    inputEl.disabled = state;
+    statusLine.textContent = state ? "Nova is typing…" : STATUS_IDLE;
+  };
+
+  // Sending
+  const send = async (text) => {
+    const value = (text ?? inputEl.value).trim();
+    if (!value) return;
+
+    addMessage("user", value);
+    inputEl.value = "";
+    renderQuickReplies([]);
+    setBusy(true);
+    showTyping();
+
+    try {
+      const res = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: value }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const { text: reply, suggestions } = await res.json();
+
+      hideTyping();
+      addMessage("bot", reply || "(empty reply)");
+      renderQuickReplies(suggestions);
+    } catch (err) {
+      hideTyping();
+      addMessage(
+        "bot",
+        `⚠️ Nova's local engine did not give a usable reply (${API}).\n\n` +
+        "Make sure `python server.py` is running in another terminal.\n\n" +
+        `Error: ${err.message}`
+      );
+      renderQuickReplies(["What can you do?", "Try again"]);
+    } finally {
+      setBusy(false);
+      inputEl.focus();
+    }
+  };
+
+  // Greeting
+  const greet = () => setTimeout(() => {
+    addMessage("bot", GREETING);
+    renderQuickReplies(GREETING_CHIPS);
+  }, 350);
+
+  // Events
+  formEl.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (!busy) send();
+  });
+
+  inputEl.addEventListener("keydown", (e) => {
+    if (e.key !== "Enter" || e.shiftKey) return;
+    e.preventDefault();
+    if (!busy) send();
+  });
+
+  clearBtn.addEventListener("click", () => {
+    chatEl.replaceChildren();
+    greet();
+  });
+
+  greet();
+  setTimeout(() => inputEl.focus(), 600);
+})();
+</script>
+</body>
+</html>

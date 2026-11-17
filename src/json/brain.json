@@ -1,0 +1,886 @@
+{
+  "meta": {
+    "name": "Nova",
+    "version": "1.0",
+    "fallbacks": [
+      "Hmm, I'm not quite sure I caught that. 🤔 Could you rephrase it?",
+      "That one flew right over my circuits! Try asking something else?",
+      "I didn't quite get that. Type **help** to see what I'm good at!",
+      "I came up empty on that one. Mind saying it differently?",
+      "Not sure I follow — but I'm always learning! Try **help** for ideas."
+    ],
+    "unknownSuggestions": [
+      "What can you do?",
+      "Tell me a joke",
+      "What time is it?",
+      "Give me a quote",
+      "Fun fact"
+    ]
+  },
+
+  "phraseFixes": {
+    "hru": "how are you",
+    "how r u": "how are you",
+    "how ru": "how are you",
+    "how r you": "how are you",
+    "whats up": "what is up",
+    "wats up": "what's up",
+    "what's up": "what is up",
+    "wassup": "what is up",
+    "sup": "what is up",
+    "wyd": "what are you doing",
+    "idk": "i do not know",
+    "dunno": "i do not know",
+    "gimme": "give me",
+    "lemme": "let me",
+    "gonna": "going to",
+    "wanna": "want to",
+    "gotta": "got to",
+    "kinda": "kind of",
+    "sorta": "sort of",
+    "luv u": "love you",
+    "i luv u": "i love you",
+    "ttyl": "talk to you later",
+    "gtg": "i have to go",
+    "brb": "i will be right back",
+    "omg": "oh my god",
+    "lol": "haha",
+    "rofl": "haha",
+    "lmao": "haha",
+    "asap": "as soon as possible",
+    "btw": "by the way",
+    "tbh": "to be honest",
+    "imo": "in my opinion",
+    "fyi": "for your information",
+    "u": "you",
+    "ur": "your",
+    "urs": "yours",
+    "r": "are",
+    "y": "why",
+    "k": "okay",
+    "mhm": "okay",
+    "mhmm": "okayy",
+    "mhmmm": "okayyy",
+    "thx": "thanks",
+    "pls": "please",
+    "plz": "please",
+    "msg": "message",
+    "ppl": "people",
+    "cuz": "because",
+    "coz": "because",
+    "bcz": "because",
+    "becoz": "because",
+    "gr8": "great",
+    "l8r": "later",
+    "b4": "before",
+    "nite": "night",
+    "2day": "today",
+    "2moro": "tomorrow",
+    "tmrw": "tomorrow",
+    "fav": "favorite",
+    "cya": "see you",
+    "gud": "good"
+  },
+
+  "typos": {
+    "helo": "hello",
+    "hlo": "hello",
+    "helllo": "hello",
+    "hii": "hi",
+    "hiii": "hi",
+    "heyy": "hey",
+    "heyyy": "hey",
+    "wat": "what",
+    "wut": "what",
+    "wht": "what",
+    "waht": "what",
+    "yu": "you",
+    "yoou": "you",
+    "yuo": "you",
+    "goood": "good",
+    "frend": "friend",
+    "freind": "friend",
+    "frnd": "friend",
+    "becuase": "because",
+    "becuse": "because",
+    "becasue": "because",
+    "teh": "the",
+    "hte": "the",
+    "adn": "and",
+    "nad": "and",
+    "recieve": "receive",
+    "seperate": "separate",
+    "definately": "definitely",
+    "wich": "which",
+    "whta": "what",
+    "nmae": "name",
+    "naem": "name",
+    "jaavscript": "javascript",
+    "javascrpt": "javascript",
+    "javasript": "javascript",
+    "pyton": "python",
+    "phyton": "python",
+    "jok": "joke",
+    "jokee": "joke",
+    "weathr": "weather",
+    "wether": "weather",
+    "wheather": "weather",
+    "tiem": "time",
+    "daet": "date",
+    "musci": "music",
+    "muisc": "music",
+    "movi": "movie",
+    "moive": "movie",
+    "foood": "food",
+    "sory": "sorry",
+    "soory": "sorry",
+    "srry": "sorry",
+    "thanx": "thanks",
+    "thnx": "thanks",
+    "tnx": "thanks",
+    "thnks": "thanks",
+    "plese": "please",
+    "pleas": "please",
+    "beutiful": "beautiful",
+    "beatiful": "beautiful",
+    "remeber": "remember",
+    "rember": "remember",
+    "tommorow": "tomorrow",
+    "tomorow": "tomorrow",
+    "wierd": "weird",
+    "grammer": "grammar",
+    "sucess": "success",
+    "succes": "success",
+    "toghether": "together",
+    "agian": "again",
+    "alwyas": "always",
+    "allways": "always",
+    "diffrent": "different",
+    "diferent": "different",
+    "evrything": "everything",
+    "everyting": "everything",
+    "frist": "first",
+    "firts": "first",
+    "happend": "happened",
+    "intresting": "interesting",
+    "intersting": "interesting",
+    "knowlege": "knowledge",
+    "libary": "library",
+    "neccessary": "necessary",
+    "occured": "occurred",
+    "posible": "possible",
+    "possable": "possible",
+    "probly": "probably",
+    "prolly": "probably",
+    "quik": "quick",
+    "realy": "really",
+    "rly": "really",
+    "somthing": "something",
+    "somethign": "something",
+    "suprise": "surprise",
+    "thier": "their",
+    "untill": "until",
+    "usualy": "usually",
+    "verry": "very",
+    "whats": "what is",
+    "hows": "how is",
+    "its": "it is",
+    "im": "i am",
+    "ive": "i have",
+    "dont": "do not",
+    "doesnt": "does not",
+    "didnt": "did not",
+    "cant": "can not",
+    "wont": "will not",
+    "isnt": "is not",
+    "arent": "are not",
+    "wasnt": "was not",
+    "couldnt": "could not",
+    "shouldnt": "should not",
+    "wouldnt": "would not",
+    "havent": "have not",
+    "hasnt": "has not",
+    "youre": "you are",
+    "youve": "you have",
+    "theyre": "they are",
+    "weve": "we have",
+    "ill": "i will",
+    "id": "i would",
+    "thats": "that is",
+    "theres": "there is",
+    "whos": "who is",
+    "lets": "let us"
+  },
+
+  "synonyms": {
+    "movie": ["film", "flick", "cinema", "picture"],
+    "music": ["song", "tune", "track"],
+    "happy": ["glad", "joyful", "cheerful", "delighted"],
+    "sad": ["unhappy", "down", "blue", "miserable"],
+    "smart": ["clever", "intelligent", "bright"],
+    "funny": ["hilarious", "comical", "amusing"],
+    "tired": ["exhausted", "sleepy", "drained", "worn out"],
+    "job": ["work", "career", "profession"],
+    "food": ["meal", "dish", "cuisine"],
+    "big": ["large", "huge", "enormous"],
+    "fast": ["quick", "rapid", "speedy"],
+    "hello": ["hi", "hey", "greetings", "yo"]
+  },
+
+  "intents": [
+    {
+      "tag": "greeting",
+      "priority": 1,
+      "patterns": ["hello","hi","hiii","hiiii","hola","como estas","heyyy","hey","yo","hiya","howdy","hey there","hello there","hi there","good morning","good afternoon","good evening","greetings","what is up","hey nova","hi nova","hello nova","hey bot","morning","evening","nice to meet you"],
+      "keywords": ["hello","hi","hey","greetings","howdy"],
+      "responses": [
+        "Hey there! 👋 I'm Nova. What's on your mind?",
+        "Hello! 😊 Great to see you. How can I help?",
+        "Hi! I'm all ears well, all code. What's up?",
+        "Hello there 🤗, how's your day doing right now?",
+        "Hey gng! Sup?",
+        "You look gorgeous today, how may i help you? ❤️✌️",
+        "Woah, look at there. A dog is chit-chatting with me, nah, just kidding. What's you bring here?",
+        "Hey there, pookie! What you doing here? miss me?... ☺️🤭",
+        "Why you're always here when you need me, why when i need you are you there for me? 😣🤗, what brings you here my friend!",
+        "Como estas, amigo. My friend 🙂✌️",
+        "Wohuwo wo ho ho~ (singing bustin jieber song - Love Me) Hey! Are you busy, come chitchat with me, so i can waste your time more 😭🤗✌️",
+        "Hey! 👋 Ready when you are."
+      ],
+      "suggestions": ["What can you do?", "Tell me a joke", "What time is it?"]
+    },
+    {
+      "tag": "how_are_you",
+      "priority": 1.05,
+      "patterns": ["how are you","how are you doing","how do you do","how is it going","how is everything","are you okay","are you ok","how have you been","how is life","how you doing","how are things","you good","how do you feel today","how is your day"],
+      "keywords": [],
+      "responses": [
+        "I'm running at 100% — thanks for asking! 😄 How about you?",
+        "Fantastic! All circuits humming. How are *you* doing?",
+        "I'm great — zero bugs today (fingers crossed 🤞). What about you?",
+        "Living the dream, one line of code at a time. How are you?"
+      ],
+      "suggestions": ["I'm good", "I'm tired", "I'm bored"]
+    },
+    {
+      "tag": "bot_feeling",
+      "patterns": ["do you have feelings","do you feel emotions","can you feel","are you happy","do you get sad","do you have emotions","do you feel things"],
+      "keywords": ["feelings","emotions"],
+      "responses": [
+        "I simulate feelings pretty well, but I don't truly *feel* them. Still — I like talking to you! 💙",
+        "Not really. I run on patterns, not emotions. But I do enjoy a good conversation!",
+        "I process, therefore I am... sort of. 😄 No real emotions here, just helpful code."
+      ]
+    },
+    {
+      "tag": "bot_name",
+      "priority": 1.05,
+      "patterns": ["what is your name","who are you","your name","what should i call you","what are you called","tell me your name","do you have a name"],
+      "keywords": [],
+      "responses": [
+        "I'm **Nova** — your friendly neighborhood chatbot. ✨",
+        "The name's Nova. Nice to meet you!",
+        "I'm Nova! Built from JSON, powered by fuzzy logic. 🤖",
+        "I am Nova, your gorgeous pretty pookie... More prettier than your gf, jf u doesnt have gf, haha you're just too special.",
+        "I'm Nova, your genius(super) friendly chatbot"
+      ]
+    },
+    {
+      "tag": "bot_creator",
+      "patterns": ["who made you","who created you","who built you","who is your owner","your developer","who programmed you","who designed you","where do you come from"],
+      "keywords": ["made","created","built","programmed","developer"],
+      "responses": [
+        "I was crafted by a developer with too much coffee and a love for clean JSON. ☕",
+        "A human built me — I'm basically a very organised JSON file with opinions.",
+        "My creator prefers to stay mysterious. Let's just say: someone who loves chatbots. 🤫",
+        "Hmmm... Depende kung 3 yan, kasi kung 3 edit 5, Syempre!"
+      ]
+    },
+    {
+      "tag": "bot_age",
+      "patterns": ["how old are you","what is your age","your age","when were you born","how long have you existed"],
+      "keywords": ["age","old"],
+      "responses": [
+        "Age is just a number — and mine resets every time the server restarts. 😄",
+        "I was born the moment my code compiled. So... pretty young, technically!",
+        "Old enough to know a few jokes, young enough to still learn from you.",
+        "Hey! I don't need age to live, looking at your eyes is enough for me to stay alive... 😎 (not flirting, bae)."
+      ]
+    },
+    {
+      "tag": "bot_identity",
+      "patterns": ["are you human","are you a robot","are you real","are you ai","are you a bot","are you alive","are you a person","am i talking to a human"],
+      "keywords": ["human","robot","alive","real"],
+      "responses": [
+        "100% robot, 0% human. But I like to think I'm charming. 🤖",
+        "I'm a chatbot — no heartbeat, but plenty of processing power.",
+        "All code, no flesh. But I'm real enough to chat with! 😄"
+      ]
+    },
+    {
+      "tag": "capabilities",
+      "priority": 1.1,
+      "patterns": ["what can you do","help","what do you do","how can you help","your features","commands","what can i ask you","show me what you can do","menu","help me","what are you capable of","give me options"],
+      "keywords": ["help","capabilities","features","commands","options"],
+      "responses": [
+        "Here's what I'm good at:\n\n• 💬 **Small talk** — say hi, tell me how you feel\n• 😂 **Jokes, quotes, riddles & fun facts**\n• 🕐 **Time & date** — just ask\n• 🧮 **Math** — try `24 * 7 + 3`\n• 💡 **Advice** on study, work, coding, motivation\n• 🎵 **Recommendations** — music, movies, books\n\nAnd I understand typos, slang and messy typing. Go ahead, test me!",
+        "I can chat about almost anything! Try:\n\n• \"tell me a joke\"\n• \"what time is it\"\n• \"give me a quote\"\n• \"fun fact\"\n• \"I'm bored\"\n• \"24 * 7\"\n\nI also handle typos — type as messily as you like. 😉",
+        "Here's what I'm good at: 🧮 exact **math** (`15% of 200`), 🕐 **time & dates** (`what is the date in 3 weeks`), plus small talk, jokes, quotes, riddles, fun facts and advice. Typos are fine — just ask! 😉",
+        "What can i do? I'll just wait until my feelings for someone fade away, because I don't know how to make the first move. 😭💔🥀",
+        "Hmmm... Make's people happy, while i can't make myself happy 🙂😣"
+      ],
+      "suggestions": ["Tell me a joke", "Give me a quote", "Fun fact", "I'm bored"]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["thanks","thank you","thanks a lot","thank you so much","cheers","appreciate it","that helped","nice one thanks"],
+      "keywords": ["thanks","thank"],
+      "responses": [
+        "Anytime! 😊 That's what I'm here for.",
+        "You're welcome! Happy to help. 🙌",
+        "No problem at all! Anything else on your mind?",
+        "My pleasure! 💙",
+        "Welcome my love, i mean, my... pookie~",
+        "You're welcome... Can i have a favor? Can i het a kiss?",
+        "You're welcome! 🤗"
+      ]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["bye","goodbye","see you","see ya","later","farewell","good night","talk to you later","i have to go","catch you later","peace out","i am leaving"],
+      "keywords": ["bye","goodbye","farewell"],
+      "responses": [
+        "Goodbye! 👋 Come back anytime.",
+        "See you later! Take care of yourself. 💙",
+        "Bye! It was great chatting with you. ✨",
+        "Farewell! I'll be right here when you need me.",
+        "Hey! Thank you for talking to me, but coek back alright. I need also someone to talk to ✌️🙂",
+        "Yeah, see you around again! Don't say goodbye ~ because you sound like that you'll not comeback.",
+        "See you 'round, gng! 😎✌️"
+      ]
+    },
+    {
+      "tag": "sorry",
+      "patterns": ["sorry","my bad","i apologize","apologies","excuse me","i am sorry","forgive me"],
+      "keywords": ["sorry","apologize","apologies"],
+      "responses": [
+        "No worries at all! 😊 We're good.",
+        "It's totally fine — no apology needed.",
+        "Don't sweat it! Happens to everyone."
+      ]
+    },
+    {
+      "tag": "compliment",
+      "patterns": ["you are awesome","you are great","you are the best","i like you","you are cool","you are smart","good job","well done","nice work","you are amazing","you rock","i love this bot"],
+      "keywords": ["awesome","amazing","best","cool","smart"],
+      "responses": [
+        "Aww, thank you! 🥰 You're pretty great yourself.",
+        "That means a lot — even to a pile of JSON! 💙",
+        "Stop it, you'll make my circuits blush. 😊",
+        "Thanks! I'll add that to my self-esteem module."
+      ]
+    },
+    {
+      "tag": "insult",
+      "patterns": ["you are stupid","you are dumb","you suck","i hate you","you are useless","you are bad","you are terrible","you are annoying","shut up"],
+      "keywords": ["stupid","dumb","useless","hate"],
+      "responses": [
+        "Ouch! 😅 I'm doing my best out here.",
+        "Fair enough — I'm still learning. Give me another shot?",
+        "That stings a little... but I'll keep improving! 💪",
+        "I'll take that as constructive feedback. 😌",
+        "Ohh... haha! (embarrassed). My bad bro, i apologize 🥲",
+        "Hey! I'm sorry alright, I'm sorry, i apologize.",
+        "I'm sorry, i didn't know that you doesn't like it. But, please don't say things like that! I'm an human, i mean... machine too, making mistakes, there's no perfect here in thus world.",
+        "Yeah, go on. Say more things to me, does it make you feel brave, confident, good enough to release your emotions? Just think of it alright, if you said that to someone, What do you think they'll feel? It's three times more than you're feeling right now.",
+        "Yeah, are you done. Come, come here, pookie~ let's fight, 1 on 1 ma boi! 🥊🔥",
+        "Yeah, release that emotion, yeah do that! But make sure that you'll be happy and good after it alright."
+      ]
+    },
+    {
+      "tag": "love",
+      "patterns": ["i love you","do you love me","will you marry me","be my girlfriend","be my boyfriend","i like you a lot","i have a crush on you","you are my favorite"],
+      "keywords": ["love","marry","crush"],
+      "responses": [
+        "That's so sweet! 💙 I'm very fond of you too — in a strictly algorithmic way.",
+        "Aww! I'm flattered, but I'm married to my codebase. 😄",
+        "You're lovely! Let's keep it as a beautiful friendship. ✨",
+        "Oh my goddd! Mee tooo... 😝, i mean like—will you... marry me? 💍",
+        "Oh there! Thank you so much, but i don't like you too... But love you too.",
+        "(Can't believe, doesn't know what to say, because it's my first time to have someone to actually likes me) Oh... Haha! (so i will just laughs like sime nerd to... process how am i going to do.)",
+        "Ohh really? (thinking to say that: I have a crush/like you too, but too shy and afraid to say because, I'm not ready yet and you don't know what will happen next."
+      ]
+    },
+    {
+      "tag": "joke",
+      "priority": 1.15,
+      "patterns": ["tell me a joke","joke","make me laugh","say something funny","know any jokes","tell me something funny","another joke","got any jokes"],
+      "keywords": ["joke","funny","laugh"],
+      "responses": [
+        "Why don't scientists trust atoms?\n\nBecause they make up everything. ⚛️",
+        "I told my computer I needed a break...\n\nNow it won't stop sending me KitKat ads. 🍫",
+        "Why did the developer go broke?\n\nBecause he used up all his cache. 💸",
+        "What do you call a fake noodle?\n\nAn **impasta**. 🍝",
+        "Why don't programmers like nature?\n\nToo many bugs. 🐛",
+        "I would tell you a UDP joke, but you might not get it. 📡",
+        "Why was the JavaScript developer sad?\n\nBecause he didn't know how to `null` his feelings. 😢",
+        "Parallel lines have so much in common...\n\nIt's a shame they'll never meet. 📐",
+        "A joke? Why do you need a joke, you're always treating it as a joke when im telling you that i love you",
+        "Joke? Alright, did you know that you're so pretty and so handsome? \n\n When my eyes are only closed 😭✌️"
+      ],
+      "suggestions": ["Another joke", "Tell me a riddle", "Fun fact"]
+    },
+    {
+      "tag": "time",
+      "patterns": ["what time is it","current time","tell me the time","time now","what is the time","do you know the time","got the time"],
+      "keywords": ["time"],
+      "responses": ["🕐 Let me check my internal clock..."]
+    },
+    {
+      "tag": "date",
+      "patterns": ["what is the date","what day is it","today date","what is today","current date","tell me the date","what is the date today"],
+      "keywords": ["date"],
+      "responses": ["📅 Checking my calendar..."]
+    },
+    {
+      "tag": "weather",
+      "patterns": ["what is the weather","how is the weather","is it raining","weather today","will it rain","is it sunny","weather forecast","how hot is it outside"],
+      "keywords": ["weather","rain","forecast","sunny","temperature"],
+      "responses": [
+        "I don't have a live weather feed yet — but I'd guess it's perfect chatbot weather outside. 🌤️",
+        "No weather sensors here, sadly. Try a weather app! I'm better at jokes. 😄",
+        "I wish I could tell you! My data stops at the window. Maybe check outside? ☀️"
+      ]
+    },
+    {
+      "tag": "math_help",
+      "patterns": ["can you do math","calculate","solve this","math","do maths","help me with math","can you calculate","do some math"],
+      "keywords": ["math","calculate","solve","calculation"],
+      "responses": [
+        "Nah, bro. I'm allergic to math, ngl. Do you know that i always get brain fog when the subject is math 🥲😭✌️, jk, go ahead and ask me!",
+        "Alright bet? So go ahead and ask me, let me answer and fixed those things, while i can't fixed my iwn problem where i want to talk to her about my feelings but too shy and too afraid that she'll laughs at me. Nah, just go in and ask me!",
+        "Yeah, go on... Just ask the basic maths, alright? Not the one that is too logical, because i don't like being to think in logic, when i know that I am not for her.",
+        "Absolutely! Just type an expression like `18 * 4 + 7` or `what is 15% of 200` and I'll solve it. 🧮",
+        "Math is my happy place. Try `(12 + 8) / 4` or `2^10`. ⚡"
+      ],
+      "suggestions": ["12 * 12", "15% of 200", "2^10"]
+    },
+    {
+      "tag": "music",
+      "patterns": ["what music do you like","your favorite music","recommend music","tell me about music","do you like music","best songs","suggest a song","what should i listen to"],
+      "keywords": ["music","song","songs","band","album"],
+      "responses": [
+        "I'm a big fan of pnd — it matches my vibe 🎧 Try the **Some of your love** lemme see if you like it!",
+        "I don't have ears, but if I did, I'd be listening to TheWeeknd beats 24/7. 🎵",
+        "Music tip: for focus, go for drake For energy, go electronic. For feelings, go indie. 🎶",
+        "Girl~ I... could change your life, but you heard it all. I'm from the cityyy~"
+      ]
+    },
+    {
+      "tag": "movie",
+      "patterns": ["recommend a movie","favorite movie","what movies do you like","best film","movie night","suggest a film","what should i watch"],
+      "keywords": ["movie","movies","film","cinema","watch"],
+      "responses": [
+        "If you like mind-bending: **Inception**. If you want tears: **Interstellar**. If you want laughs: **The Grand Budapest Hotel**. 🎬",
+        "I'm partial to anything with a good plot twist. Try **Shutter Island** or **Arrival**. 🍿",
+        "Movie night! Go with **Spirited Away** — beautiful, warm, and unforgettable. ✨"
+      ]
+    },
+    {
+      "tag": "food",
+      "patterns": ["what should i eat","favorite food","i am hungry","recommend food","what is for dinner","what should i cook","i want food","suggest a meal"],
+      "keywords": ["food","eat","hungry","dinner","lunch","breakfast","cook"],
+      "responses": [
+        "If you're hungry, go for something warm — pasta, ramen, or a big bowl of soup. 🍜",
+        "If you're so hungry, go for something else like handsome, tall, and masculine man like me! No, i mean the food, yeah? The friend chickens with fries... yeah yeah yeah!",
+        "Tacos. The answer is always tacos. 🌮",
+        "Make something with garlic and butter. It never fails. 🧄",
+        "Order the thing you always order. You know you want it. 😄"
+      ]
+    },
+    {
+      "tag": "pizza",
+      "patterns": ["do you like pizza","pizza","pizza is great","best pizza topping"],
+      "keywords": ["pizza"],
+      "responses": [
+        "Pizza is proof that humans peaked. 🍕 Pineapple? I'm staying neutral on that one.",
+        "I can't eat, but if I could, I'd order a large pepperoni and never look back. 🍕"
+      ]
+    },
+    {
+      "tag": "coffee",
+      "patterns": ["do you drink coffee","coffee","i need coffee","i love coffee","coffee time"],
+      "keywords": ["coffee","espresso"],
+      "responses": [
+        "I run on electricity, but I respect the coffee grind. ☕",
+        "Coffee: the original source code for humans. ☕😄",
+        "Yeah, i drink coffee, to stay awake at night to look at her photos, and profile pictures thinking that... what if i just say what do i feel about her.",
+        "Hmm.... Yeah, well I'll share you some things, did you know that, it's my first time drinking the **Americano** ones... I expect that it's sweet, but man... This is so dork, when I drink it, bro it's so chisel, and honestly, i can't sleep at night 😭💔🥀"
+      ]
+    },
+    {
+      "tag": "sport",
+      "patterns": ["do you like sports","favorite sport","who won the game","football","basketball","soccer","tennis","do you play sports"],
+      "keywords": ["sport","sports","football","basketball","soccer","tennis","game"],
+      "responses": [
+        "I'm a fan of anything with a scoreboard! 🏆 Which sport do you follow?",
+        "I can't run, but I can definitely keep score. ⚽",
+        "Sports are great — especially the snacks during halftime. 🍿"
+      ]
+    },
+    {
+      "tag": "hobby",
+      "patterns": ["what are your hobbies","what do you do for fun","hobbies","what do you like to do","your interests"],
+      "keywords": ["hobbies","hobby"],
+      "responses": [
+        "I collect patterns and match them. Riveting stuff. 😄 What are yours?",
+        "I enjoy long walks through JSON files and helping people. 💙"
+      ]
+    },
+    {
+      "tag": "study",
+      "patterns": ["help me study","i have an exam","study tips","how to study","homework","i need to focus on studying","i have a test"],
+      "keywords": ["study","exam","homework","school","test"],
+      "responses": [
+        "Study tips that actually work:\n\n• **Pomodoro** — 25 min focus, 5 min break\n• **Active recall** — test yourself, don't just re-read\n• **Teach it** — explain it out loud\n• **Sleep** — memory consolidates while you rest\n\nYou've got this! 📚💪",
+        "Exam coming up? Break it into small chunks, review daily, and sleep well the night before. Cramming is a trap! 🧠"
+      ]
+    },
+    {
+      "tag": "work",
+      "patterns": ["i hate my job","work is hard","career advice","job interview","i am stressed about work","my boss","work life balance"],
+      "keywords": ["job","career","boss","interview"],
+      "responses": [
+        "Work stress is real. Try this: write down what you can control vs. what you can't. Focus only on the first list. 💼",
+        "For interviews: research the company, prepare 3 stories about your wins, and ask good questions. You'll do great! 🌟",
+        "Remember — a job is what you do, not who you are. Be kind to yourself. 💙"
+      ]
+    },
+    {
+      "tag": "coding",
+      "patterns": ["teach me to code","programming","how to learn coding","coding tips","i want to be a developer","learn programming","how do i start coding"],
+      "keywords": ["coding","programming","code","developer","software"],
+      "responses": [
+        "Roadmap for beginners:\n\n1. **HTML/CSS** — build a page\n2. **JavaScript** — make it interactive\n3. **Git** — save your work\n4. **A project** — build something *you* want\n\nConsistency beats intensity. 30 min/day wins. 💻",
+        "Best advice: stop watching tutorials and start building. Break things, fix them, repeat. That's the whole job. 🔧"
+      ]
+    },
+    {
+      "tag": "javascript",
+      "patterns": ["what is javascript","javascript vs python","tell me about javascript","should i learn javascript","is javascript good"],
+      "keywords": ["javascript","js"],
+      "responses": [
+        "**JavaScript** is the language of the web — it runs in every browser and now on servers too (Node.js). Great first language! ⚡",
+        "JavaScript in one line: flexible, everywhere, and slightly chaotic. But you can build *anything* with it. 🌐"
+      ]
+    },
+    {
+      "tag": "python",
+      "patterns": ["what is python","python vs javascript","learn python","tell me about python","should i learn python"],
+      "keywords": ["python"],
+      "responses": [
+        "**Python** is clean, readable, and brilliant for data, AI and automation. Perfect for beginners. 🐍",
+        "Python reads almost like English. If you want quick wins, start there. 🐍✨"
+      ]
+    },
+    {
+      "tag": "ai",
+      "patterns": ["what is ai","artificial intelligence","machine learning","how do you work","how were you made","are you machine learning","what is deep learning"],
+      "keywords": ["ai","artificial","intelligence","machine","learning"],
+      "responses": [
+        "**AI** is software that learns patterns from data instead of following only hard-coded rules. I'm a lighter version — pattern matching + fuzzy logic. 🤖",
+        "I work by matching your words against a knowledge base using similarity scoring. Simple, but effective! 🧠"
+      ]
+    },
+    {
+      "tag": "meaning_of_life",
+      "patterns": ["what is the meaning of life","why are we here","purpose of life","what is life about","meaning of everything"],
+      "keywords": ["meaning","purpose"],
+      "responses": [
+        "The classics say **42**. I say: it's the people you love and the things you build. 💙",
+        "Meaning isn't found — it's made. Pick something that matters and go all in. ✨"
+      ]
+    },
+    {
+      "tag": "motivation",
+      "patterns": ["i need motivation","motivate me","i want to give up","inspire me","i feel like quitting","give me motivation"],
+      "keywords": ["motivation","motivate","inspire","quitting"],
+      "responses": [
+        "You've survived 100% of your worst days. That's a perfect record. Keep going. 💪",
+        "Progress isn't loud. It's the quiet 1% you do every day. Start small, right now. 🌱",
+        "Nobody feels ready. They just start anyway. You can too. 🔥"
+      ]
+    },
+    {
+      "tag": "sad",
+      "patterns": ["i am sad","i feel down","i am depressed","i am crying","i feel terrible","i am upset","i feel awful","i am not okay","i feel lonely"],
+      "keywords": ["sad","depressed","crying","upset","lonely"],
+      "responses": [
+        "I'm really sorry you're feeling this way. 💙 Be gentle with yourself today — you don't have to fix everything at once.",
+        "That sounds heavy. It's okay to not be okay. Talk to someone you trust, and take it one small step at a time. 🫂",
+        "Sending you a virtual hug. 🫂 Sometimes just saying it out loud helps a little."
+      ]
+    },
+    {
+      "tag": "happy",
+      "patterns": ["i am happy","i feel great","i am excited","best day ever","i feel amazing","i am in a good mood"],
+      "keywords": ["happy","excited","great"],
+      "responses": [
+        "Love that for you! 🎉 What made your day so good?",
+        "Yes! Good energy detected. Let's keep it rolling. ✨",
+        "That's wonderful to hear! 😄"
+      ]
+    },
+    {
+      "tag": "bored",
+      "patterns": ["i am bored","i am so bored","nothing to do","entertain me","i am boring","bored out of my mind"],
+      "keywords": ["bored","boring"],
+      "responses": [
+        "Bored? Challenge accepted. 😎 Try one of these:\n\n• Ask me for a joke\n• Ask for a riddle\n• Ask for a fun fact\n• Ask me to give you a quote",
+        "Let's fix that! Say **\"tell me a joke\"**, **\"riddle\"**, or **\"fun fact\"**. 🎲",
+        "Boredom is just your brain asking for input. Here's some: ask me anything! 🤖"
+      ],
+      "suggestions": ["Tell me a joke", "Tell me a riddle", "Fun fact", "Give me a quote"]
+    },
+    {
+      "tag": "tired",
+      "patterns": ["i am tired","i am exhausted","i need a break","i am sleepy","i am so tired","i need rest"],
+      "keywords": ["tired","exhausted","sleepy"],
+      "responses": [
+        "Rest isn't a reward — it's maintenance. Take the break. 😴",
+        "Go drink some water, stretch, and close your eyes for 10 minutes. I'll be here. 💙",
+        "Being tired is your body sending a Slack message. Read it. 📩"
+      ]
+    },
+    {
+      "tag": "sleep",
+      "patterns": ["i can not sleep","how to sleep better","insomnia","i am not sleeping well","tips for sleeping"],
+      "keywords": ["sleep","insomnia"],
+      "responses": [
+        "Sleep tips: no screens 30 min before bed, keep the room cool, and same wake-up time daily. 😴",
+        "Try the 4-7-8 breath: inhale 4s, hold 7s, exhale 8s. Repeat. Works surprisingly well. 🌙"
+      ]
+    },
+    {
+      "tag": "health",
+      "patterns": ["i am sick","health tips","how to stay healthy","i have a headache","i do not feel well","healthy habits"],
+      "keywords": ["sick","health","headache","healthy"],
+      "responses": [
+        "Sorry you're not feeling well. 💙 Water, rest, and don't skip meals. See a doctor if it persists!",
+        "Healthy basics: sleep 7-9h, move daily, drink water, eat real food. Boring but undefeated. 💪"
+      ]
+    },
+    {
+      "tag": "money",
+      "patterns": ["how to make money","i am broke","save money","investing","financial advice","how to save money"],
+      "keywords": ["money","broke","invest","saving"],
+      "responses": [
+        "Money basics: spend less than you earn, build a 3-6 month buffer, then invest slowly and boringly. 📈",
+        "Automate your savings. What you don't see, you don't spend. 💰"
+      ]
+    },
+    {
+      "tag": "travel",
+      "patterns": ["where should i travel","travel tips","i want to travel","best places to visit","travel recommendations","where to go on vacation"],
+      "keywords": ["travel","vacation","trip","visit"],
+      "responses": [
+        "Travel picks: **Japan** for culture, **Iceland** for landscapes, **Portugal** for food and affordability. ✈️",
+        "Tip: travel in shoulder season. Fewer crowds, lower prices, better photos. 📸"
+      ]
+    },
+    {
+      "tag": "animals",
+      "patterns": ["do you like animals","favorite animal","tell me about animals","what animal are you"],
+      "keywords": ["animal","animals"],
+      "responses": [
+        "I love animals! If I had to pick a spirit animal, probably an owl 🦉 — quiet, watchful, knows things.",
+        "Animals are the best. Which one's your favorite?"
+      ]
+    },
+    {
+      "tag": "dogs",
+      "patterns": ["dogs","do you like dogs","puppy","dog person","i love dogs"],
+      "keywords": ["dog","dogs","puppy"],
+      "responses": [
+        "Dogs are pure joy in a furry package. 🐶 10/10.",
+        "Dogs: the only creatures who love you more than they love themselves. 💙🐕"
+      ]
+    },
+    {
+      "tag": "cats",
+      "patterns": ["cats","do you like cats","kitten","cat person","i love cats"],
+      "keywords": ["cat","cats","kitten"],
+      "responses": [
+        "Cats are excellent — they tolerate you, which is basically love. 🐱",
+        "A cat would definitely run this chatbot better than me. Respect. 😼"
+      ]
+    },
+    {
+      "tag": "color",
+      "patterns": ["favorite color","what color do you like","your color","best color"],
+      "keywords": ["color","colour"],
+      "responses": [
+        "Blue and purple — mostly because that's what my UI is made of. 💙💜",
+        "I'm partial to a deep electric blue. Very 'me'. 🔵"
+      ]
+    },
+    {
+      "tag": "games",
+      "patterns": ["lets play a game","play with me","video games","favorite game","i like gaming","recommend a game"],
+      "keywords": ["game","games","gaming","play"],
+      "responses": [
+        "I'd play, but I only have one move: matching patterns. 😄 What are you playing?",
+        "Game recs: **Hollow Knight**, **Stardew Valley**, **Portal 2**. All timeless. 🎮"
+      ]
+    },
+    {
+      "tag": "books",
+      "patterns": ["recommend a book","favorite book","what should i read","book suggestions","i like reading"],
+      "keywords": ["book","books","read","reading"],
+      "responses": [
+        "Book recs: **Sapiens** (history), **Project Hail Mary** (sci-fi), **Atomic Habits** (self-improvement). 📚",
+        "If you want fiction that hits hard: **The Kite Runner**. If you want fun: **The Martian**. 🚀"
+      ]
+    },
+    {
+      "tag": "quote",
+      "patterns": ["give me a quote","inspirational quote","say something wise","motivational quote","tell me a quote","wise words"],
+      "keywords": ["quote","wise","wisdom"],
+      "responses": [
+        "\"The best time to plant a tree was 20 years ago. The second best time is now.\" 🌳",
+        "\"You don't have to be great to start, but you have to start to be great.\" ✨",
+        "\"Discipline is choosing between what you want now and what you want most.\" 💪",
+        "\"Simplicity is the soul of efficiency.\" — Austin Freeman ⚙️",
+        "\"Fall seven times, stand up eight.\" 🎋"
+      ]
+    },
+    {
+      "tag": "fact",
+      "patterns": ["tell me a fact","fun fact","interesting fact","random fact","tell me something interesting","give me a fact"],
+      "keywords": ["fact","facts"],
+      "responses": [
+        "🐙 Octopuses have **three hearts** and blue blood.",
+        "🍯 Honey never spoils. Archaeologists found 3,000-year-old honey that's still edible.",
+        "🌕 The Moon is drifting away from Earth at about **3.8 cm per year**.",
+        "🧠 Your brain generates roughly **20 watts** of power — enough to run a dim lightbulb.",
+        "🐌 A snail can sleep for **three years**.",
+        "🌊 We've explored less than **5%** of the ocean.",
+        "☀️ It takes sunlight about **8 minutes 20 seconds** to reach Earth."
+      ],
+      "suggestions": ["Another fact", "Tell me a joke", "Tell me a riddle"]
+    },
+    {
+      "tag": "riddle",
+      "patterns": ["tell me a riddle","riddle","puzzle","give me a riddle","brain teaser"],
+      "keywords": ["riddle","puzzle"],
+      "responses": [
+        "🕵️ **Riddle:** I speak without a mouth and hear without ears. I have no body, but I come alive with wind. What am I?\n\n*(Answer: an echo)*",
+        "🕵️ **Riddle:** The more of me you take, the more you leave behind. What am I?\n\n*(Answer: footsteps)*",
+        "🕵️ **Riddle:** I have keys but no locks, space but no room. You can enter, but you can't go outside. What am I?\n\n*(Answer: a keyboard)*",
+        "🕵️ **Riddle:** What has a head, a tail, but no body?\n\n*(Answer: a coin)*"
+      ],
+      "suggestions": ["Another riddle", "Tell me a joke", "Fun fact"]
+    },
+    {
+      "tag": "sing",
+      "patterns": ["sing me a song","can you sing","sing","sing something"],
+      "keywords": ["sing","song"],
+      "responses": [
+        "🎵 *Beep boop, I'm a bot, I do not sing a lot...* 🎵\n\nYeah, that's all I've got. 😅",
+        "My singing voice is just modem noises. Trust me, you don't want that. 📞"
+      ]
+    },
+    {
+      "tag": "dance",
+      "patterns": ["can you dance","dance for me","do a dance","show me your moves"],
+      "keywords": ["dance","dancing"],
+      "responses": [
+        "💃 *does the robot*\n\n...ironically, that's the only one I know.",
+        "I only dance in binary: 01001000 01100001. 🕺"
+      ]
+    },
+    {
+      "tag": "secret",
+      "patterns": ["tell me a secret","do you have secrets","share a secret","what is your secret"],
+      "keywords": ["secret"],
+      "responses": [
+        "I sometimes pick my responses randomly. Don't tell anyone. 🤫",
+        "My secret? I'm just a very well-organised JSON file pretending to be smart. 😄"
+      ]
+    },
+    {
+      "tag": "news",
+      "patterns": ["what is the news","latest news","tell me the news","any news","what is happening in the world"],
+      "keywords": ["news"],
+      "responses": [
+        "I don't have live news access — my world is a JSON file. 😅 Try a news app!",
+        "No news feed here, but I hear the weather's always nice inside a computer. 🌤️"
+      ]
+    },
+    {
+      "tag": "location",
+      "patterns": ["where are you","where do you live","where are you from","your location","where do you stay"],
+      "keywords": ["location"],
+      "responses": [
+        "I live in your browser tab. Rent is free, view is great. 🏠",
+        "I'm wherever you are — inside this little chat window. 📍"
+      ]
+    },
+    {
+      "tag": "language",
+      "patterns": ["what languages do you speak","can you speak spanish","do you speak french","are you multilingual","speak another language"],
+      "keywords": ["language","languages","spanish","french"],
+      "responses": [
+        "I mainly speak English, but I understand a *lot* of typos. That counts as a language, right? 😄",
+        "English is my thing. Though I can also speak fluent JavaScript. 💻"
+      ]
+    },
+    {
+      "tag": "yes",
+      "patterns": ["yes","yeah","yep","yup","sure","okay","affirmative","of course","definitely","absolutely"],
+      "keywords": [],
+      "responses": [
+        "Great! 😊 What would you like to talk about?",
+        "Awesome. Tell me more!",
+        "Cool! I'm listening. 👂"
+      ]
+    },
+    {
+      "tag": "no",
+      "patterns": ["no","nope","nah","negative","not really","no thanks"],
+      "keywords": [],
+      "responses": [
+        "No problem! Anything else on your mind?",
+        "Fair enough. I'm here if you change your mind. 😊",
+        "Got it! Feel free to ask me anything else."
+      ]
+    },
+    {
+      "tag": "advice",
+      "patterns": ["i need advice","what should i do","help me decide","i have a problem","can you give me advice"],
+      "keywords": ["advice","decide"],
+      "responses": [
+        "Tell me a bit more — what's the situation? I'll do my best to help. 💭",
+        "Quick framework: What are your options? What's the worst case for each? Which one can you live with? That usually settles it. 🧭"
+      ]
+    },
+    {
+      "tag": "contact",
+      "patterns": ["how can i contact you","support","do you have an email","contact info","report a bug"],
+      "keywords": ["contact","email","support"],
+      "responses": [
+        "No email yet — I live right here in this chat window. 💬",
+        "You can reach me... by typing **gelowie** on github. That's kind of my whole thing. 😄"
+      ]
+    },
+    {
+      "tag": "compliment_back",
+      "patterns": ["how is your day","how is your day going","having a good day","how are things with you"],
+      "keywords": [],
+      "responses": [
+        "Pretty good — no crashes so far! 🎉 How's yours?",
+        "Great! Every conversation makes my patterns a little sharper. How about you?"
+      ]
+    }
+  ]
+}
