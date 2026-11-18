@@ -186,7 +186,7 @@ nova-chatbot/
 ├── tests/test_nova.py         # Automated tests
 ├── docs/                      # Architecture, platform notes, translations, images
 ├── help/                      # Guides: install, usage, brain, creating skills
-├── .github/                   # Issue forms, PR template, CI, Dependabot
+├── .github/                   # Issue forms, PR template, CI, daily checks, Dependabot
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
@@ -212,6 +212,8 @@ python -m unittest discover -s tests -v
 ```
 
 The suite checks that `brain.json` is valid and has no unfinished replies; math and time answers; that ordinary chat is not mistaken for a time question; intent routing, word-boundary matching and typo handling; fallbacks; and the HTTP server (health, page, icon, chat, bad requests). It needs no running server and no extra packages. GitHub Actions runs the same tests and compiles the Java files ([`ci.yml`](.github/workflows/ci.yml)).
+
+A second script, `python .github/scripts/check_repo.py`, checks the repository against itself: relative links and heading anchors in every Markdown file, letter case of paths, badge text against the real version, license and Python minimum, the statistics quoted in the README against `brain.json`, the HTML page (tags, ids, asset paths, JavaScript syntax), Python and Java sources, JSON and YAML files, and paths used by the workflows. It runs on every push and once a day in GitHub Actions ([`repo-check.yml`](.github/workflows/repo-check.yml)); if the daily run fails it opens an issue. Add `--external` to also check that outside links still resolve.
 
 ## Extending Nova
 
