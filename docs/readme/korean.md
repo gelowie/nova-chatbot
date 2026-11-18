@@ -149,7 +149,7 @@ nova-chatbot/
 │   ├── readme/                #   README 번역본
 │   └── img/                   #   배너, 아이콘, 배지
 ├── help/                      #   가이드(설치, 사용, 두뇌, 스킬)
-├── .github/                   # 이슈 양식, PR 템플릿, CI, Dependabot
+├── .github/                   # 이슈 양식, PR 템플릿, CI, 매일 점검, Dependabot
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
@@ -173,6 +173,8 @@ python -m unittest discover -s tests -v
 ```
 
 테스트는 `brain.json`의 유효성, 계산과 시간 답변, 일반 대화가 시간 질문으로 오인되지 않는지, 인텐트 라우팅, 오타 처리, 대체 응답, HTTP 서버(상태 확인, 페이지, 아이콘, 채팅, 잘못된 요청)를 확인합니다. 실행 중인 서버나 추가 패키지는 필요 없습니다. GitHub Actions도 같은 테스트를 실행하고 Java 파일을 컴파일합니다([`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)).
+
+또 다른 스크립트 `python .github/scripts/check_repo.py`는 저장소 자체의 일관성을 점검합니다. Markdown 링크와 제목 앵커, 경로의 대소문자, 배지와 실제 버전·라이선스·Python 최소 버전의 일치, README의 통계 수치와 `brain.json`의 일치, HTML 페이지, Python과 Java 소스, JSON과 YAML 파일, 워크플로의 경로를 확인합니다. 푸시할 때마다, 그리고 GitHub Actions([`repo-check.yml`](../../.github/workflows/repo-check.yml))에서 매일 실행되며, 매일 실행이 실패하면 이슈가 생성됩니다. `--external`을 붙이면 외부 링크도 확인합니다.
 
 ## Nova 확장하기
 
