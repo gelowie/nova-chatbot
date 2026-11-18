@@ -149,7 +149,7 @@ nova-chatbot/
 │   ├── readme/                #   README の翻訳
 │   └── img/                   #   バナー、アイコン、バッジ
 ├── help/                      #   ガイド（インストール、使い方、頭脳、スキル）
-├── .github/                   # Issue フォーム、PR テンプレート、CI、Dependabot
+├── .github/                   # Issue フォーム、PR テンプレート、CI、毎日のチェック、Dependabot
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
@@ -173,6 +173,8 @@ python -m unittest discover -s tests -v
 ```
 
 テストでは、`brain.json` が正しいこと、計算と時刻の答え、普通の会話が時刻の質問と誤認されないこと、インテントのルーティング、タイプミス処理、フォールバック、HTTP サーバー（ヘルスチェック、ページ、アイコン、チャット、不正なリクエスト）を確認します。サーバーの起動や追加パッケージは不要です。GitHub Actions も同じテストを実行し、Java ファイルをコンパイルします（[`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)）。
+
+もう一つのスクリプト `python .github/scripts/check_repo.py` は、リポジトリ自体の整合性を確認します。Markdown のリンクと見出しアンカー、パスの大文字小文字、バッジと実際のバージョン・ライセンス・Python 最低バージョンの一致、README の統計値と `brain.json` の一致、HTML ページ、Python と Java のソース、JSON と YAML ファイル、ワークフロー内のパスが対象です。プッシュのたびに、また GitHub Actions（[`repo-check.yml`](../../.github/workflows/repo-check.yml)）で毎日実行され、毎日の実行が失敗すると Issue が作成されます。`--external` を付けると外部リンクも確認します。
 
 ## Nova を拡張する
 
