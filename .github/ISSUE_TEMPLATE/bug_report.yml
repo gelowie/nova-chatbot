@@ -1,0 +1,106 @@
+name: Bug report
+description: Report a bug or unexpected behaviour in Nova
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. The more exact you are, the faster it can be fixed.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: A clear, short description of the bug.
+      placeholder: When I type X, Nova answers Y instead of Z.
+    validations:
+      required: true
+
+  - type: input
+    id: message
+    attributes:
+      label: Message you sent to Nova
+      description: Copy it exactly, including typos and punctuation. Leave empty if the bug is not about a reply.
+      placeholder: whats 5 plus 3 times 2
+    validations:
+      required: false
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Run `python server.py`
+        2. Open http://127.0.0.1:8000
+        3. Type "..."
+        4. See the problem
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: What did you expect Nova to do or say?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which part of Nova is affected?
+      options:
+        - Math skill
+        - Time and date skill
+        - JSON brain (replies and matching)
+        - Chat page
+        - Server / API
+        - Java port
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Nova version
+      description: Shown in CHANGELOG.md and the version badge in the README.
+      placeholder: "1.0"
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating system
+      description: For example Windows 11, macOS 14, Ubuntu 24.04 or Android with Termux.
+    validations:
+      required: true
+
+  - type: input
+    id: python_version
+    attributes:
+      label: Python version
+      description: Output of `python --version`. Leave empty for Java-only issues.
+    validations:
+      required: false
+
+  - type: input
+    id: java_version
+    attributes:
+      label: Java version
+      description: Output of `java -version`. Only for the Java port.
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Terminal output or screenshots
+      description: Anything printed by `server.py`, or a screenshot of the chat page.
+      render: shell
+    validations:
+      required: false

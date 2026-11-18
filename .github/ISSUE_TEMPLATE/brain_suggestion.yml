@@ -1,0 +1,58 @@
+name: Brain suggestion
+description: Suggest a new topic, pattern, reply or typo fix for Nova's JSON brain
+title: "[Brain]: "
+labels: ["brain", "enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Nova's conversation lives in `src/json/brain.json`. Use this form for new topics, missing phrasings, wrong replies and typo or slang fixes. See [the JSON brain guide](https://github.com/gelowie/nova-chatbot/blob/main/help/the-json-brain.md) for how entries are structured.
+
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of change?
+      options:
+        - New topic
+        - More patterns for an existing topic
+        - New or better replies
+        - Typo or slang fix
+        - Wrong or confusing reply
+    validations:
+      required: true
+
+  - type: input
+    id: topic
+    attributes:
+      label: Topic
+      description: The existing topic (tag) this belongs to, or a name for a new one.
+      placeholder: cooking, greeting, jokes...
+    validations:
+      required: false
+
+  - type: textarea
+    id: messages
+    attributes:
+      label: Example messages
+      description: What people would type, one per line, in lowercase English without punctuation.
+      placeholder: |
+        how do i boil an egg
+        egg boiling time
+    validations:
+      required: true
+
+  - type: textarea
+    id: reply
+    attributes:
+      label: Suggested reply
+      description: What Nova should say. For a wrong reply, paste the current reply and say what is wrong.
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd be willing to submit a pull request for this
+          required: false

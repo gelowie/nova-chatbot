@@ -1,0 +1,58 @@
+name: Feature request
+description: Suggest a feature or improvement for Nova
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the suggestion. Nova stays local, has no third-party dependencies and makes no outgoing network calls, so requests that need any of those cannot be accepted.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What can't you do today, or what is awkward?
+      placeholder: I want Nova to be able to...
+    validations:
+      required: true
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: How should it work? Example messages and replies help a lot.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+    validations:
+      required: false
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      options:
+        - New skill
+        - Math skill
+        - Time and date skill
+        - JSON brain (replies and matching)
+        - Chat page
+        - Server / API
+        - Java port
+        - Documentation
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd be willing to submit a pull request for this
+          required: false
