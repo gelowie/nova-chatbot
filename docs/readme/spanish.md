@@ -149,7 +149,7 @@ nova-chatbot/
 │   ├── readme/                #   traducciones del README
 │   └── img/                   #   banner, icono, insignias
 ├── help/                      #   guías (instalación, uso, cerebro, habilidades)
-├── .github/                   # formularios de issues, plantilla de PR, CI, Dependabot
+├── .github/                   # formularios de issues, plantilla de PR, CI, comprobaciones diarias, Dependabot
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
@@ -173,6 +173,8 @@ python -m unittest discover -s tests -v
 ```
 
 Las pruebas comprueban que `brain.json` es válido, las respuestas de matemáticas y hora, que la conversación normal no se confunda con una pregunta de hora, el enrutamiento de intenciones, el manejo de erratas, las respuestas de reserva y el servidor HTTP (estado, página, icono, chat, solicitudes incorrectas). No necesitan un servidor en marcha ni paquetes adicionales. GitHub Actions ejecuta las mismas pruebas y compila los archivos Java ([`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)).
+
+Otro script, `python .github/scripts/check_repo.py`, comprueba el repositorio contra sí mismo: enlaces relativos y anclas de títulos en cada archivo Markdown, mayúsculas y minúsculas de las rutas, texto de las insignias frente a la versión, la licencia y el mínimo de Python reales, las cifras del README frente a `brain.json`, la página HTML, el código Python y Java, los archivos JSON y YAML y las rutas de los workflows. Se ejecuta en cada push y una vez al día en GitHub Actions ([`repo-check.yml`](../../.github/workflows/repo-check.yml)); si la ejecución diaria falla, abre un issue. Con `--external` también comprueba los enlaces externos.
 
 ## Ampliar Nova
 
