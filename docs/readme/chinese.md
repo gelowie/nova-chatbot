@@ -149,7 +149,7 @@ nova-chatbot/
 │   ├── readme/                #   README 译文
 │   └── img/                   #   横幅、图标、徽章
 ├── help/                      #   指南（安装、使用、大脑、技能）
-├── .github/                   # Issue 表单、PR 模板、CI、Dependabot
+├── .github/                   # Issue 表单、PR 模板、CI、每日检查、Dependabot
 ├── CHANGELOG.md
 ├── LICENSE
 └── README.md
@@ -173,6 +173,8 @@ python -m unittest discover -s tests -v
 ```
 
 该测试集检查 `brain.json` 是否有效、数学和时间的答案、普通聊天不会被误认为时间问题、意图路由、拼写错误处理、兜底回复，以及 HTTP 服务器（健康检查、页面、图标、聊天、错误请求）。它不需要运行中的服务器，也不需要额外的包。GitHub Actions 会运行同一测试集并编译 Java 文件（[`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)）。
+
+另有脚本 `python .github/scripts/check_repo.py`，用于检查仓库自身的一致性：Markdown 链接与标题锚点、路径大小写、徽章与实际版本/许可证/Python 最低版本是否一致、README 中的统计数字与 `brain.json` 是否一致、HTML 页面、Python 与 Java 源码、JSON 与 YAML 文件，以及工作流中的路径。它在每次推送时以及每天通过 GitHub Actions（[`repo-check.yml`](../../.github/workflows/repo-check.yml)）运行一次；每日运行失败时会自动创建 Issue。加上 `--external` 还会检查外部链接。
 
 ## 扩展 Nova
 
