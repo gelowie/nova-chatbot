@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Java build output
+out/
+*.class
+target/
+hs_err_pid*
+
+# Editors and IDEs
+.idea/
+.vscode/
+*.swp
+*~
+
+# Operating system
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local files
+*.log
+.env
